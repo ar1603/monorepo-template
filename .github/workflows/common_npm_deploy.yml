@@ -1,0 +1,26 @@
+name: template - Common publish job
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  template_common_publish_npm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PA_TOKEN }}
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          registry-url: "https://registry.npmjs.org"
+      - name: Install Dependencies
+        run: yarn workspace @template/common install
+      - name: Build 🔧
+        run: yarn build:common
+      - name: Publish package on NPM 📦
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

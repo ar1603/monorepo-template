@@ -1,0 +1,3 @@
+yarn lint:all
+chmod +x scripts/run-staged-tests.sh
+yarn run-staged-tests

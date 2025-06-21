@@ -1,0 +1,11 @@
+{
+  "Title_1": "Test",
+  "Title_2": "Cov.com",
+  "LandingPage": {
+    "heroText": "Welcome to template.com",
+    "searchPlaceholder": "Search for a roadmaps"
+  },
+  "Footer": {
+    "copyrightText": "© {{year}} Hourcoding.com | All rights reserved"
+  }
+}

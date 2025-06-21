@@ -1,0 +1,11 @@
+{
+  "Title_1": "template",
+  "Title_2": "Docs",
+  "LandingPage": {
+    "heroText": "Welcome to template.com",
+    "searchPlaceholder": "Search for a roadmaps"
+  },
+  "Footer": {
+    "copyrightText": "© {{year}} Hourcoding.com | All rights reserved"
+  }
+}

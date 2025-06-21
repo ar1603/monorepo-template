@@ -1,0 +1,36 @@
+{
+  "name": "template",
+  "version": "0.1.0",
+  "description": "Monorepo for test coverage demonstration web apps",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "devDependencies": {
+    "husky": "^9.0.11"
+  },
+  "scripts": {
+    "start:main": "yarn workspace main start",
+    "start:docs": "yarn workspace docs start",
+    "start:common": "yarn workspace @template/common start",
+    "lint:main": "yarn workspace main lint",
+    "test:main": "yarn workspace main test",
+    "build:main": "yarn workspace main build",
+    "test:main:cov": "yarn workspace main test:cov",
+    "lint:docs": "yarn workspace docs lint",
+    "test:docs": "yarn workspace docs test",
+    "build:docs": "yarn workspace docs build",
+    "test:docs:cov": "yarn workspace docs test:cov",
+    "lint:common": "yarn workspace @template/common lint:staged",
+    "test:common": "yarn workspace @template/common test",
+    "test:common:cov": "yarn workspace @template/common test:cov",
+    "build:common": "yarn workspace @template/common install && yarn workspace @template/common build",
+    "publish:common": "yarn workspace @template/common publish",
+    "lint:all": "eslint --fix --ext .ts,.tsx ./packages ./apps",
+    "prepare": "husky",
+    "run-staged-tests": "./scripts/run-staged-tests.sh",
+    "run-pushed-files-tests": "./scripts/run-staged-tests.sh --pushed"
+  },
+  "packageManager": "yarn@4.0.0"
+}

@@ -1,0 +1,20 @@
+examples/
+rollup.config.js
+coverage/
+node_modules/
+examples
+package/
+storybook-static/
+.storybook/
+.github/
+
+# Ignore all files in the root except the package.json
+!package.json
+!LICENSE
+
+hourcoding-hourcoding-ui*.tgz
+!README.md  
+
+# Step to setup roll-up
+# https://stackoverflow.com/questions/77152570/rolluperror-default-is-not-exported-by-node-modules-react-index-js
+# https://blog.logrocket.com/how-to-build-component-library-react-typescript/

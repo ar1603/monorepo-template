@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TitleBoxContainer should set the document title 1`] = `
+<div>
+  <div
+    class="css-0"
+  >
+    <div />
+    Test Children
+  </div>
+</div>
+`;

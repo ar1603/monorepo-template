@@ -1,0 +1,36 @@
+name: Build - common
+
+on:
+  push:
+    paths:
+      - "packages/**"
+      - ".github/workflows/common_build_test.yml"
+    branches: ["development"]
+  pull_request:
+    paths:
+      - "packages/**"
+      - ".github/workflows/common_build_test.yml"
+    branches: ["development"]
+
+jobs:
+  common_lint_build_test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+      - name: Install Dependencies
+        run: yarn workspace @template/common install
+      - name: Linting
+        run: yarn lint:common
+      - name: Build
+        run: yarn build:common
+      - name: Test
+        run: yarn test:common:cov
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.COMMON_CODECOV_TOKEN }}

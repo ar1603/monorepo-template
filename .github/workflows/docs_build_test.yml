@@ -1,0 +1,38 @@
+name: Build - Docs
+
+on:
+  push:
+    paths:
+      - "apps/docs**"
+      - ".github/workflows/docs_build_test.yml"
+    branches: ["development"]
+  pull_request:
+    paths:
+      - "apps/docs/**"
+      - ".github/workflows/main_build_test.yml"
+    branches: ["development"]
+
+jobs:
+  docs_lint_build_test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+      - name: Install Dependencies
+        run: yarn install
+      - name: Build common
+        run: yarn build:common
+      - name: Linting
+        run: yarn lint:docs
+      - name: Build
+        run: yarn build:docs
+      - name: Test
+        run: yarn test:docs:cov
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.DOCS_CODECOV_TOKEN }}
